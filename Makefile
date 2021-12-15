@@ -10,7 +10,7 @@ SRCS = srcs/utils.c 	\
 OBJS = $(SRCS:.c=.o)
 OBJS_MAIN = $(SRCS_MAIN:.c=.o)
 CC	= clang
-CCFLANG	= -Wall -Wextra -Werrors
+CCFLAGS	= -Wall -Wextra -Werror
 INCLUDE	= -lpthread -g
 RM = rm -rf
 

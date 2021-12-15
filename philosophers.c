@@ -6,7 +6,7 @@
 /*   By: jcid-gon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:13:40 by jcid-gon          #+#    #+#             */
-/*   Updated: 2021/12/15 14:13:03 by jcid-gon         ###   ########.fr       */
+/*   Updated: 2021/12/15 14:39:16 by jcid-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	ft_clean(t_base *base)
 int	main(int argc, char **argv)
 {
 	t_base		base;
-	int			i;
 
 	if (argc != 5 && argc != 6)
 	{
