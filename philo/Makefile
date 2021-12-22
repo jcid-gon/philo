@@ -5,7 +5,8 @@ SRCS_MAIN = philosophers.c
 SRCS = srcs/utils.c 	\
 	   srcs/eat.c		\
 	   srcs/threads.c	\
-	   srcs/message.c
+	   srcs/message.c	\
+	   srcs/time.c
 
 OBJS = $(SRCS:.c=.o)
 OBJS_MAIN = $(SRCS_MAIN:.c=.o)

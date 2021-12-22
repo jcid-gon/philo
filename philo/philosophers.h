@@ -6,7 +6,7 @@
 /*   By: jcid-gon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:14:06 by jcid-gon          #+#    #+#             */
-/*   Updated: 2021/12/14 13:06:41 by jcid-gon         ###   ########.fr       */
+/*   Updated: 2021/12/22 13:54:20 by jcid-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_base{
 	pthread_t		*pit;
 	pthread_mutex_t	writing;
 	int				stop;
+	int				end;
 }	t_base;
 
 int			ft_strlen(char *str);
@@ -57,9 +58,14 @@ void		ft_print_message(t_philos *philos);
 void		ft_take_forks(t_philos *philos);
 void		ft_leave_forks(t_philos *philos);
 void		ft_eat(t_philos *philos);
-void		*ft_monitor(void *arg);
+void		*ft_monitor(t_base *base);
 void		*ft_routinr(void *arg);
-void		philos_start(t_base *base);
+void		ft_philos_start(t_base *base);
 void		ft_assing_var(int argc, char **argv, t_base *base);
+void		ft_clean(t_base *base);
+void		ft_destroy_forks(t_base *base);
+void		ft_wait(uint64_t timestamp);
+void		ft_thread_create(t_base *base);
+void		ft_throw_forks(t_base *base);
 
 #endif

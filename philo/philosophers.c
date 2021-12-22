@@ -6,7 +6,7 @@
 /*   By: jcid-gon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:13:40 by jcid-gon          #+#    #+#             */
-/*   Updated: 2021/12/15 14:39:16 by jcid-gon         ###   ########.fr       */
+/*   Updated: 2021/12/22 13:49:10 by jcid-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_assing_var(int argc, char **argv, t_base *base)
 	base->sleep_time = ft_atoi(argv[4]);
 	base->death = 0;
 	base->stop = 0;
+	base->end = 0;
 	if (argc == 6)
 		base->iter_max = ft_atoi(argv[5]);
 	else
@@ -46,21 +47,36 @@ void	ft_assing_var(int argc, char **argv, t_base *base)
 	base->time = ft_get_time();
 }
 
-void	ft_clean(t_base *base)
+void	ft_destroy_forks(t_base *base)
 {
 	int	i;
 
 	i = 0;
 	while (i < base->philo_num)
 	{
+		ft_leave_forks(&base->philos[i]);
+		i++;
+	}
+	i = 0;
+	while (i < base->philo_num)
+	{
 		pthread_mutex_destroy(&base->forks[i]);
 		i++;
 	}
-	free(base->forks);
-	free(base->pit);
-	free(base->is_free);
-	free(base->philos);
 	pthread_mutex_destroy(&base->writing);
+}
+
+void	ft_clean(t_base *base)
+{
+	ft_destroy_forks(base);
+	if (base->forks)
+		free(base->forks);
+	if (base->pit)
+		free(base->pit);
+	if (base->is_free)
+		free(base->is_free);
+	if (base->philos)
+		free(base->philos);
 }
 
 int	main(int argc, char **argv)
@@ -78,6 +94,6 @@ int	main(int argc, char **argv)
 		ft_putstr("Invalid arguments\n");
 		return (-1);
 	}
-	philos_start(&base);
+	ft_philos_start(&base);
 	ft_clean(&base);
 }
