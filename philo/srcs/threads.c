@@ -6,7 +6,7 @@
 /*   By: jcid-gon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:17:58 by jcid-gon          #+#    #+#             */
-/*   Updated: 2021/12/22 13:53:50 by jcid-gon         ###   ########.fr       */
+/*   Updated: 2022/01/12 13:56:27 by jcid-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	*ft_routine(void *arg)
 	while (philos->base->death == 0)
 	{
 		ft_eat(philos);
-		ft_monitor(philos->base);
 		philos->state = 0;
 		if (philos->base->philo_num != 1)
 			ft_print_message(philos);
@@ -65,7 +64,7 @@ void	*ft_routine(void *arg)
 			&& philos->base->iter_max != -1)
 			return (NULL);
 		if (philos->base->philo_num % 2 == 1)
-			ft_wait(ft_get_time() + philos->base->eat_time);
+			ft_wait(ft_get_time() + philos->base->eat_time, philos->base);
 	}
 	return (NULL);
 }
@@ -78,7 +77,7 @@ void	ft_thread_create(t_base *base)
 	i = 0;
 	while (i < base->philo_num)
 	{
-		philo = ((void *) & base->philos[i]);
+		philo = ((void *) &base->philos[i]);
 		if (pthread_create(&base->pit[i], NULL, &ft_routine, philo) != 0)
 		{
 			ft_putstr("Error creating threads.");

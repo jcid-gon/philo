@@ -6,7 +6,7 @@
 /*   By: jcid-gon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 15:14:06 by jcid-gon          #+#    #+#             */
-/*   Updated: 2021/12/22 13:54:20 by jcid-gon         ###   ########.fr       */
+/*   Updated: 2022/01/12 13:42:13 by jcid-gon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void		ft_philos_start(t_base *base);
 void		ft_assing_var(int argc, char **argv, t_base *base);
 void		ft_clean(t_base *base);
 void		ft_destroy_forks(t_base *base);
-void		ft_wait(uint64_t timestamp);
+void		ft_wait(uint64_t timestamp, t_base *base);
 void		ft_thread_create(t_base *base);
 void		ft_throw_forks(t_base *base);
 
